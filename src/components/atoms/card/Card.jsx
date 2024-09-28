@@ -15,3 +15,9 @@ const SCard = styled.div`
         border-radius: 8px;
         padding: 16px;
 `;
+
+// prop-typesを使ってchildrenを検証する
+import PropTypes from 'prop-types';
+Card .propTypes = {
+        children: PropTypes.node
+};

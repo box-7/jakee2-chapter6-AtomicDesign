@@ -6,8 +6,6 @@ export const UserCard = (props) => {
         const { user } = props;
         return (
                 <Card>
-                        {/* <img height={160} width={160} src={user.image} alt={user.name}  />
-                        <p>{user.name}</p> */}
                         <UserIconWithName image={user.image} name={user.name} />
                         <SDl>
                                 <dt>メール</dt>
@@ -23,6 +21,12 @@ export const UserCard = (props) => {
         );
 };
 
+// text-align: left;
+        // <dl> 内のテキストを左揃えにする
+// float: left;
+        // <dt> を左に寄せ、テキストの流れから外し、<dd> と並べて表示することができる
+// overflow-wrap: break-word;
+        // <dd> 内のテキストが長すぎる場合、単語の途中で改行し、内容を表示できるようにする
 const SDl = styled.dl`
         text-align: left;
         margin-bottom: 0;
@@ -32,7 +36,12 @@ const SDl = styled.dl`
         dd {
                 padding-left: 32px;
                 padding-bottom: 8px;
-                // はみ出すことがなくなる
                 overflow-wrap: break-word;
         }
 `
+
+// prop-typesを使ってchildrenを検証する
+import PropTypes from 'prop-types';
+UserCard.propTypes = {
+        user: PropTypes.node
+};

@@ -13,7 +13,6 @@ export const UserIconWithName = (props) => {
 const SContainer = styled.div`
         text-align: center;
         background-color: pink;
-
 `
 const SImg = styled.img`
         border-radius: 50%;
@@ -26,5 +25,10 @@ const SName = styled.p`
         color: #40514e;
 `;
 
-                        {/* <img src="https://source.unsplash.com/NE0XGVKTmcA" alt="プロフィール" style={{ borderRadius: '50%' }} />
-                        <p>じゃけぇ</p> */}
+// prop-typesを使ってchildrenを検証する
+import PropTypes from 'prop-types';
+UserIconWithName.propTypes = {
+        image: PropTypes.node,
+        name: PropTypes.node,
+};
+

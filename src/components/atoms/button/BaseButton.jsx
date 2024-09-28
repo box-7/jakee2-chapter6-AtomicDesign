@@ -1,5 +1,6 @@
 import  styled from "styled-components";
 
+ // outline: none;: フォーカス時の枠線を消す
 export const BaseButton = styled.button`
         color: #fff;
         padding: 6px 24px;

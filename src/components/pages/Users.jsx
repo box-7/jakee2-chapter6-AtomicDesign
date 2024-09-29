@@ -1,7 +1,11 @@
 import styled  from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
-import { useLocation } from "react-router-dom"; 
+import { SecondaryButton } from "../atoms/button/SecondaryButton";
+import { useContext } from "react";
+import { UserContext } from "../../providers/UserProvider";
+
+// import { useLocation } from "react-router-dom"; 
 
 // 長さ10の空の配列を作成し、その keys() メソッドでイテレータを取得
 // コレクション（配列、リストなど）の要素を順番に一つずつ取り出すための仕組み
@@ -19,24 +23,28 @@ const users = [...Array(10).keys()].map(((val) => {
         };
 }));
 
-
 // useLocation 
 // React Router が提供するフックの一つで、現在のURLに関する情報を取得するためのもの
 // state は、その情報の中の、URLに紐づいた追加データのこと
 // このコード は、現在のURLに紐づいた追加データを、state という変数に代入している
 
 export const Users = () => {
-        const { state } = useLocation();
-        const isAdmin = state ? state.isAdmin : false;
+        // const { state } = useLocation();
+        // const isAdmin = state ? state.isAdmin : false;
+
+        const { userInfo, setUserInfo } = useContext(UserContext);
+        const onClickSwitch = () => {
+                setUserInfo({ isAdmin: !userInfo.isAdmin });
+        };
 
         return (
                 <SContainer>
                         <h2>ユーザー一覧</h2>
                         <SearchInput />
-
+                        <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
                         <SUserArea>
                         {users.map((user) => (
-                                <UserCard key={user.id} user={user} isAdmin={isAdmin} />
+                                <UserCard key={user.id} user={user} />
                         ))}
                         </SUserArea>
 

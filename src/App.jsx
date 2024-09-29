@@ -1,9 +1,12 @@
 // import './App.css'
+import { UserProvider } from './providers/UserProvider';
 import { Router } from './router/Router';
 
 export default function App() {
         return (
-                <Router />
+                <UserProvider>
+                        <Router />
+                </UserProvider>
         );
 };
 

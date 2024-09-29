@@ -1,17 +1,21 @@
 // import './App.css'
+import { RecoilRoot } from 'recoil';
 import { UserProvider } from './providers/UserProvider';
 import { Router } from './router/Router';
 
 export default function App() {
         return (
-                <UserProvider>
-                        <Router />
-                </UserProvider>
+                <RecoilRoot>
+                        <UserProvider>
+                                <Router />
+                        </UserProvider>
+                </RecoilRoot>
+        //         name: "じゃけぇ",
+
         );
 };
 
         // const user = {
-        //         name: "じゃけぇ",
         //         image: "src/img/おばけ.jpg",
         //         email: "12345@example.com",
         //         phone: "090-1111-2222" ,

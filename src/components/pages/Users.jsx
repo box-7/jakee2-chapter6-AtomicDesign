@@ -2,10 +2,11 @@ import styled  from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
-
+// import { useContext } from "react";
+// import { UserContext } from "../../providers/UserProvider";
+import { useRecoilState } from "recoil";
 // import { useLocation } from "react-router-dom"; 
+import { userState } from "../../store/userState";
 
 // 長さ10の空の配列を作成し、その keys() メソッドでイテレータを取得
 // コレクション（配列、リストなど）の要素を順番に一つずつ取り出すための仕組み
@@ -29,10 +30,11 @@ const users = [...Array(10).keys()].map(((val) => {
 // このコード は、現在のURLに紐づいた追加データを、state という変数に代入している
 
 export const Users = () => {
-        // const { state } = useLocation();
-        // const isAdmin = state ? state.isAdmin : false;
+                // const { state } = useLocation();
+                // const isAdmin = state ? state.isAdmin : false;
 
-        const { userInfo, setUserInfo } = useContext(UserContext);
+        // const { userInfo, setUserInfo } = useContext(UserContext);
+        const [ userInfo, setUserInfo ] = useRecoilState(userState);
         const onClickSwitch = () => {
                 setUserInfo({ isAdmin: !userInfo.isAdmin });
         };
